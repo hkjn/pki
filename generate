@@ -1,0 +1,10 @@
+#!/bin/sh
+
+mkdir -p /etc/certs/
+cfssl gencert \
+  -initca /etc/configs/ca-csr.json | cfssljson -bare /etc/certs/ca
+cfssl gencert \
+  -ca /etc/certs/ca.pem \
+  -ca-key /etc/certs/ca-key.pem \
+  -config /etc/configs/ca-config.json \
+   /etc/configs/req-csr.json | cfssljson -bare /etc/certs/$1

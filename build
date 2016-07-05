@@ -9,6 +9,7 @@ DOCKER_IMAGE="pki"
 
 ARCH="$(uname -m)"
 BUILD_DIR="$(mktemp -d)"
+
 cp Dockerfile "$BUILD_DIR/"
 cp generate "$BUILD_DIR/"
 cp -r configs/ "$BUILD_DIR/"

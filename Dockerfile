@@ -11,9 +11,8 @@ MAINTAINER Henrik Jonsson <me@hkjn.me>
 ENV GOPATH /go
 ENV PATH $PATH:$GOPATH/bin
 WORKDIR $GOPATH
-RUN apk add --no-cache go git gcc musl-dev
-
-RUN go get -tags nopkcs11 github.com/cloudflare/cfssl/cmd/cfssl && \
+RUN apk add --no-cache go git gcc musl-dev && \
+    go get -tags nopkcs11 github.com/cloudflare/cfssl/cmd/cfssl && \
     go get github.com/cloudflare/cfssl/cmd/cfssljson
 
 COPY configs/ /etc/configs

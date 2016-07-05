@@ -1,10 +1,15 @@
 #!/bin/sh
-
+#
+# Generates CA cert/key and single key/cert.
+#
+HOST="$1"
+echo "Generating CA key/cert and key/cert for $HOST in /etc/certs.."
 mkdir -p /etc/certs/
 cfssl gencert \
   -initca /etc/configs/ca-csr.json | cfssljson -bare /etc/certs/ca
 cfssl gencert \
+  -hostname $HOST \
   -ca /etc/certs/ca.pem \
   -ca-key /etc/certs/ca-key.pem \
   -config /etc/configs/ca-config.json \
-   /etc/configs/req-csr.json | cfssljson -bare /etc/certs/$1
+   /etc/configs/req-csr.json | cfssljson -bare /etc/certs/$HOST

@@ -12,7 +12,7 @@ BUILD_DIR="$(mktemp -d)"
 
 cp Dockerfile "$BUILD_DIR/"
 cp -r configs/ "$BUILD_DIR/"
-cp -r build/ "$BUILD_DIR/"
+cp -r bin/ "$BUILD_DIR/"
 # TODO(hkjn): Fix this special-casing to support different CPU
 # architectures. Just call it hkjn/x86_64-alpine as well?
 [[ $ARCH = "x86_64" ]] || {

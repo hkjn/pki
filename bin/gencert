@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Generates CA cert/key and single key/cert.
+# Generates key/cert for specified host.
 #
 HOST="$1"
 echo "Generating key/cert for $HOST in /certs.."
@@ -12,3 +12,4 @@ cfssl gencert \
   -ca-key /certs/ca-key.pem \
   -config /etc/configs/ca-config.json \
    /etc/configs/req-csr.json | cfssljson -bare /certs/$HOST
+rm /certs/*.csr

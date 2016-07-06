@@ -2,7 +2,7 @@
 # PKI image.
 #
 # Usage:
-# $ docker run -v $(pwd)/certs:/etc/certs hkjn/pki myclient
+# $ docker run -v $(pwd)/certs:/certs hkjn/pki myclient
 #
 FROM hkjn/alpine
 

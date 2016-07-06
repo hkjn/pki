@@ -3,13 +3,13 @@
 # Generates CA cert/key and single key/cert.
 #
 HOST="$1"
-echo "Generating CA key/cert and key/cert for $HOST in /etc/certs.."
-mkdir -p /etc/certs/
+echo "Generating CA key/cert and key/cert for $HOST in /certs.."
+mkdir -p /certs/
 cfssl gencert \
-  -initca /etc/configs/ca-csr.json | cfssljson -bare /etc/certs/ca
+  -initca /etc/configs/ca-csr.json | cfssljson -bare /certs/ca
 cfssl gencert \
   -hostname $HOST \
-  -ca /etc/certs/ca.pem \
-  -ca-key /etc/certs/ca-key.pem \
+  -ca /certs/ca.pem \
+  -ca-key /certs/ca-key.pem \
   -config /etc/configs/ca-config.json \
-   /etc/configs/req-csr.json | cfssljson -bare /etc/certs/$HOST
+   /etc/configs/req-csr.json | cfssljson -bare /certs/$HOST

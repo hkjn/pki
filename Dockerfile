@@ -18,5 +18,7 @@ RUN apk add --no-cache go git gcc musl-dev && \
 COPY configs/ /etc/configs
 COPY generate /usr/local/bin/
 
+WORKDIR /certs
+
 ENTRYPOINT ["sh"]
 

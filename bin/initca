@@ -2,8 +2,6 @@
 #
 # Generates CA cert/key.
 #
-[ "$#" -eq 1 ] || { echo "Usage: $0 host" >&2; exit 1 }
-HOST="$1"
 echo "Generating CA key/cert in /certs.."
 mkdir -p /certs/
 cfssl gencert \

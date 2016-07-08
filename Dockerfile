@@ -20,5 +20,5 @@ COPY bin/ /usr/local/bin/
 
 WORKDIR /certs
 
-ENTRYPOINT ["sh"]
+CMD ["sh"]
 

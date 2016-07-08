@@ -1,9 +1,3 @@
-#
-# PKI image.
-#
-# Usage:
-# $ docker run -v /etc/ssl/certs:/certs hkjn/pki myclient
-#
 FROM hkjn/alpine
 
 MAINTAINER Henrik Jonsson <me@hkjn.me>

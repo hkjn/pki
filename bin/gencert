@@ -17,6 +17,6 @@ cfssl gencert \
   -hostname $HOST \
   -ca /certs/ca.pem \
   -ca-key /certs/ca-key.pem \
-  -config "$TMP/req.json" \
-   /etc/configs/req-csr.json | cfssljson -bare /certs/$HOST
+  -config /etc/configs/ca-config.json \
+   "$TMP/req.json" | cfssljson -bare /certs/$HOST
 rm /certs/*.csr

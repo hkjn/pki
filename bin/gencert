@@ -12,7 +12,7 @@ echo "Generating key/cert for $HOST in /certs.."
 mkdir -p /certs/
 
 TMP="$(mktemp -d)"
-sed "s/mycn/$HOST/" /etc/configs/req-csr.json "$TMP/req.json"
+sed "s/mycn/$HOST/" /etc/configs/req-csr.json > "$TMP/req.json"
 cfssl gencert \
   -hostname $HOST \
   -ca /certs/ca.pem \

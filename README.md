@@ -7,7 +7,7 @@ Repo pki holds a PKI image.
 ## Generate self-signed Certificate Authority's certificate and key
 
 ```
-docker run -v /etc/ssl/certs:/certs hkjn/pki gencert initca
+docker run -v /etc/ssl/certs:/certs hkjn/pki initca
 ```
 
 # Generate certificate and key for `myclient` signed by the CA

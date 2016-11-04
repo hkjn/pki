@@ -10,7 +10,8 @@ RUN apk add --no-cache go git gcc musl-dev && \
     go get github.com/cloudflare/cfssl/cmd/cfssljson
 
 COPY configs/ /etc/configs
-COPY bin/ /usr/local/bin/
+COPY initca /usr/local/bin/
+COPY gencert /usr/local/bin/
 
 WORKDIR /certs
 

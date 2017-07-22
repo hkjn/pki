@@ -9,18 +9,12 @@ DOCKER_IMAGE="pki"
 
 ARCH="$(uname -m)"
 BUILD_DIR="$(mktemp -d)"
+BASEIMAGE="hkjn/alpine:$ARCH"
+TAG="$DOCKER_USER/$DOCKER_IMAGE:$ARCH"
 
-cp Dockerfile "$BUILD_DIR/"
+sed "s|{{ARG_FROM}}|${BASEIMAGE}|g" Dockerfile.in > $BUILD_DIR/Dockerfile
 cp -r configs/ "$BUILD_DIR/"
 cp -r initca gencert "$BUILD_DIR/"
-# TODO(hkjn): Fix this special-casing to support different CPU
-# architectures. Just call it hkjn/x86_64-alpine as well?
-[[ $ARCH = "x86_64" ]] || {
-  sed -i "s/FROM hkjn\//FROM hkjn\/$ARCH-/" "$BUILD_DIR/Dockerfile"
-  DOCKER_IMAGE="$ARCH-$DOCKER_IMAGE"
-}
-
-TAG="$DOCKER_USER/$DOCKER_IMAGE"
 docker build -t $TAG "$BUILD_DIR/"
 NO_PUSH=${NO_PUSH:-""}
 [[ "$NO_PUSH" ]] || docker push $TAG

@@ -1,4 +1,7 @@
-FROM hkjn/alpine
+#
+# PKI image.
+#
+FROM {{ARG_FROM}}
 
 MAINTAINER Henrik Jonsson <me@hkjn.me>
 
